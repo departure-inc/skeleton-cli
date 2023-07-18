@@ -1,0 +1,15 @@
+services:
+  api-mock:
+    image: stoplight/prism:4
+    command: mock -h 0.0.0.0 -p 8080 /openapi.yaml
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./openapi.yaml:/openapi.yaml
+  app:
+    build: .
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app

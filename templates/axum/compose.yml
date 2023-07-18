@@ -1,0 +1,41 @@
+services:
+  mail:
+    image: schickling/mailcatcher:latest
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+
+  db:
+    image: postgres:latest
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    command: cargo watch -x run
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/opt/app
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/opt/app/target
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - mail
+    environment:
+      EDITOR: vi
+
+volumes:
+  db-data:
+  cargo-cache:
+  target-cache:

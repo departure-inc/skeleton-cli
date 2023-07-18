@@ -1,0 +1,9 @@
+[package]
+name = "skeleton"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+curl = "0.4.44"
+serde = { version = "1.0.171", features = ["derive"] }
+serde_json = "1.0.103"
