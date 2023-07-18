@@ -10,3 +10,6 @@ lint.fix:
 fix:
 	cargo fix
 
+build:
+	cargo build
+	cp target/debug/skeleton bin/skeleton
