@@ -17,6 +17,24 @@ $ brew install skeleton-cli
 
 # Usage
 
+Create a new project.
+
+example.
+
+```bash
+# rails
+$ rails new example-app -T -B
+
+# nextjs
+$ pnpm create next-app
+
+# rust
+$ cargo new example-app
+
+# flutter
+$ flutter create example-app --org com.example
+```
+
 Go to project root.
 
 ```
