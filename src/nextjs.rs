@@ -104,11 +104,7 @@ pub fn init_next() {
     // add .gitignore
     println!("+ append .gitignore");
     let path = Path::new(".gitignore");
-    let mut file = OpenOptions::new()
-        .write(true)
-        .append(true)
-        .open(path)
-        .unwrap();
+    let mut file = OpenOptions::new().append(true).open(path).unwrap();
 
     writeln!(file, ".env").unwrap();
 

@@ -21,12 +21,14 @@ pub fn help_command() {
     eprintln!();
     eprintln!("OPTIONS:");
     eprintln!("  rails  : Ruby on Rails");
+    eprintln!("  react  : React+Vite");
     eprintln!("  next   : Next.js");
     eprintln!("  rust   : Rust, Axum and SQLx");
     eprintln!("  python : Python, FastAPI and SQLAlchemy");
     eprintln!("  flutter: Flutter");
     eprintln!();
     eprintln!("ARGS:");
+    eprintln!("  new   : create new project.");
     eprintln!("  init  : initialize project.");
     eprintln!("  help  : help.");
 }
