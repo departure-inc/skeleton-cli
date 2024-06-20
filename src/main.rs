@@ -5,6 +5,7 @@ mod help;
 mod nextjs;
 mod python;
 mod rails;
+mod react;
 mod rust;
 
 fn main() {
@@ -25,6 +26,7 @@ fn main() {
     let _current_path = env::current_dir().unwrap();
     let main_command = args[1].clone();
     let sub_command = args[2].clone();
+    let options_command = ext_cmd(&args);
 
     /*
     println!("current path is {}", current_path.display());
@@ -34,8 +36,16 @@ fn main() {
 
     match main_command.as_str() {
         "rails" => match sub_command.as_str() {
+            "new" => rails::new_rails(&options_command),
+            "api" => rails::api_rails(&options_command),
             "init" => rails::init_rails(),
             "help" => rails::help_rails(),
+            _ => not_found(&sub_command),
+        },
+        "react" => match sub_command.as_str() {
+            "new" => react::new_react(),
+            "init" => react::init_react(),
+            "help" => react::help_react(),
             _ => not_found(&sub_command),
         },
         "next" => match sub_command.as_str() {
@@ -66,4 +76,11 @@ fn main() {
 fn not_found(text: &str) {
     println!("! {} is not found.", text);
     println!("! example: skeleton help");
+}
+
+fn ext_cmd(args: &[String]) -> String {
+    match args.get(3) {
+        Some(arg) => arg.to_string(),
+        None => "".to_string(),
+    }
 }
